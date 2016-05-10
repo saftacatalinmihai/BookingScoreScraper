@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "scrape": "java -jar selenium-server-standalone-2.53.0.jar | node scraper.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
