@@ -1,0 +1,20 @@
+{
+  "name": "BookingScoreScraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Safta Catalin Mihai",
+  "dependencies": {
+    "cheerio": "latest",
+    "express": "latest",
+    "phantomjs": "^2.1.7",
+    "request": "latest",
+    "webdriver": "latest",
+    "webdriverio": "3.4"
+  },
+  "license": "MIT"
+}
