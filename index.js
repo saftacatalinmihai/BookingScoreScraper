@@ -30,8 +30,9 @@ function beans(list, from, to, step){
 //var url = "http://www.booking.com/hotel/de/louisa-s-place.ro.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaMABiAEBmAEguAEIyAEM2AEB6AEB-AELqAID;sid=09e5f9673ef0b1a416bfcbdf58a36e59;dcid=4;checkin=2016-05-10;checkout=2016-05-11;dest_id=-1746443;dest_type=city;dist=0;group_adults=2;group_children=0;highlighted_blocks=6693107_88925314_0_2;hpos=1;no_rooms=1;room1=A%2CA;sb_price_type=total;srfid=1bf2064b170d1990fef071e9a9a551ebb1b4cf64X1;highlight_room=";
 //var url = "http://www.booking.com/hotel/de/louisa-s-place.html";
 
-var url = "http://www.booking.com/hotel/de/apartments-mitte-residence.ro.html";
+//var url = "http://www.booking.com/hotel/de/apartments-mitte-residence.ro.html";
 
+var url = "http://www.booking.com/hotel/de/sleepcheaphostel.ro.html";
 var webdriverio = require('webdriverio');
 var options = {
     desiredCapabilities: {
@@ -49,7 +50,7 @@ client.addCommand("getScores", function(){
             .map(s => {return parseFloat(s.replace(',','.'))})
             .filter(Boolean);
         console.log(scores);
-        add_ratings(scores);
+        add_ratings(ratings, scores);
         if (err) {
             console.log("Error: " + err);
         }
