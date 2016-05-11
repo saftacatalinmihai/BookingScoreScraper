@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scrape": "java -jar selenium-server-standalone-2.53.0.jar | node scraper.js",
+    "selenium": "java -jar selenium-server-standalone-2.53.0.jar",
+    "server": "node index.js",
+    "start": "sh start.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Safta Catalin Mihai",
   "dependencies": {
     "cheerio": "latest",
-    "express": "latest",
+    "express": "^4.13.4",
     "phantomjs": "^2.1.7",
     "request": "latest",
+    "underscore": "^1.8.3",
     "webdriver": "latest",
     "webdriverio": "3.4"
   },

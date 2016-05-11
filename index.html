@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookingCom Score Scraper</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <style>
+
+        .chart div {
+            font: 10px sans-serif;
+            background-color: steelblue;
+            text-align: right;
+            padding: 3px;
+            margin: 1px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="booking-ref" action="scrape-page" method="post">
+        <input id='booking-url' type="textfield"/>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="stats" class="chart">
+    </div>
+    <script>
+        var socket = io.connect('http://' + location.hostname);
+        function bar(len){
+            return "<div style=\"width: " + len * 10 +"px;\">" + len +"</div>"
+        }
+        socket.on('ratings', function(data){
+            console.log(data);
+            $('#stats').empty();
+            $('#stats').append("<p>All ratings: " + data['ratings_all'] + "</p>");
+            $('#stats').append("<p>Avg: " + data['avg'] + "</p>");
+
+            data['beans'].map(function(bean) {
+                console.log(bean);
+                var div = bar(bean);
+                console.log(div);
+                $('#stats').append(div);
+            });
+        });
+        socket.on('err', function(err){
+            console.log(err);
+            $('#stats').append("<p>" + err + "</p>");
+        });
+
+        $(function(){
+            $('#booking-ref').submit(function(e){
+                e.preventDefault();
+                console.log($("#booking-url").val());
+                socket.emit('scrape-page', {url: $("#booking-url").val()} );
+            });
+        })
+    </script>
+</body>
+</html>
