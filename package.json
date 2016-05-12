@@ -16,6 +16,7 @@
     "express": "^4.13.4",
     "phantomjs": "^2.1.7",
     "request": "latest",
+    "socket.io": "^1.4.6",
     "underscore": "^1.8.3",
     "webdriver": "latest",
     "webdriverio": "3.4"

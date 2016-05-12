@@ -5,14 +5,10 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-server.listen(80);
+server.listen(8000);
 
 app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
-});
-
-app.get('/stats.js', function (req, res) {
-    res.sendfile(__dirname + '/stats.js');
+    res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function (socket) {
@@ -25,12 +21,15 @@ io.on('connection', function (socket) {
 // 8 com:  http://www.booking.com/hotel/de/apartments-mitte-residence.ro.html
 // 200 com: http://www.booking.com/hotel/de/sleepcheaphostel.ro.html
 function getRatings (url, socket) {
-
-    var ratings_all = [];
+    console.log("ASd");
+    var ratings_all = [];   
     bookingcom_score_scrape(url, function (json) {
         if ('err' in json){
             socket.emit('err', json['err']);
             return ;
+        }
+        if ('done' in json){
+            socket.emit('done', true);
         }
         console.log("Got ratings");
         var ratings = json['ratings'];

@@ -26,7 +26,7 @@
     <div id="stats" class="chart">
     </div>
     <script>
-        var socket = io.connect('http://' + location.hostname);
+        var socket = io.connect('http://' + location.hostname + ':8000');
         function bar(len){
             return "<div style=\"width: " + len * 10 +"px;\">" + len +"</div>"
         }
@@ -47,6 +47,9 @@
             console.log(err);
             $('#stats').append("<p>" + err + "</p>");
         });
+        socket.on('done', function(done){
+            $('#stats').append("<p>Done</p>");
+        })
 
         $(function(){
             $('#booking-ref').submit(function(e){

@@ -45,6 +45,7 @@ module.exports = function(url, cb) {
 
     client.addCommand('done', function () {
         console.log("DONE");
+        cb({done: true});
     });
 
     client.addCommand('uncheckAllLanguages', function(){
